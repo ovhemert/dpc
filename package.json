@@ -6,12 +6,21 @@
   "keywords": [
     "amqp",
     "amqplib",
+    "async",
+    "await",
+    "call",
+    "callback",
     "distributed",
     "functions",
+    "microservice",
+    "procedure",
+    "promise",
     "rabbitmq",
+    "remote",
     "rpc"
   ],
   "scripts": {
+    "dev": "node ./test/index.js",
     "test": "tap test/*.test.js --coverage",
     "lint": "standard"
   },
