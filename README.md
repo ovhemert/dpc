@@ -4,6 +4,7 @@
 [![Dependencies](https://img.shields.io/david/ovhemert/dpc.svg)](https://david-dm.org/ovhemert/dpc)
 [![Known Vulnerabilities](https://snyk.io/test/npm/dpc/badge.svg)](https://snyk.io/test/npm/dpc)
 [![Coverage Status](https://coveralls.io/repos/github/ovhemert/dpc/badge.svg?branch=master)](https://coveralls.io/github/ovhemert/dpc?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/ovhemert/dpc.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/dpc.svg)](https://www.npmjs.com/package/dpc)
 [![npm](https://img.shields.io/npm/dm/dpc.svg)](https://www.npmjs.com/package/dpc)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
@@ -83,8 +84,7 @@ Want to help me out by giving a donation? Check out these options:
 [![Patreon](https://img.shields.io/badge/style-patreon-333333.svg?logo=patreon&logoColor=&label=)](https://www.patreon.com/ovhemert)
 [![Coinbase](https://img.shields.io/badge/style-bitcoin-333333.svg?logo=bitcoin&logoColor=&label=)](https://commerce.coinbase.com/checkout/fd177bf0-a89a-481b-889e-22bfce857b75)
 [![PayPal](https://img.shields.io/badge/style-paypal-333333.svg?logo=paypal&logoColor=&label=)](https://www.paypal.me/osmondvanhemert)
-[![Ko-fi](https://img.shields.io/badge/style-coffee-333333.svg?logo=ko-fi&logoColor=&label=)](http://ko-fi.com/ovhemert) [![Greenkeeper badge](https://badges.greenkeeper.io/ovhemert/dpc.svg)](https://greenkeeper.io/)
-
+[![Ko-fi](https://img.shields.io/badge/style-coffee-333333.svg?logo=ko-fi&logoColor=&label=)](http://ko-fi.com/ovhemert)
 
 ## License
 
