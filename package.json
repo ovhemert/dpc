@@ -1,0 +1,27 @@
+{
+  "name": "dpc",
+  "version": "0.0.1",
+  "description": "Distributed Procedure Calls using AMQP",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "standard && node ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovhemert/dpc.git"
+  },
+  "author": "Osmond van Hemert <osmond@vanhemert.nu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ovhemert/dpc/issues"
+  },
+  "homepage": "https://github.com/ovhemert/dpc#readme",
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "dotenv": "^6.0.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "standard": "*"
+  }
+}
