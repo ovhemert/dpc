@@ -2,13 +2,16 @@
 
 function proxy (callback) {
   let _proxy = (params = {}, cb) => {
-    callback(params, (err, res) => {
-      if (err) {
-        if (cb) { return cb(err) } else { return Promise.reject(err) }
-      } else {
-        if (cb) { return cb(null, res) } else { return Promise.resolve(res) }
-      }
-    })
+    if (cb) {
+      callback(params, cb)
+    } else {
+      return new Promise((resolve, reject) => {
+        callback(params, (err, res) => {
+          if (err) { return reject(err) }
+          return resolve(res)
+        })
+      })
+    }
   }
   return _proxy
 }
