@@ -72,7 +72,9 @@ dpc.connect({ url: 'amqp://guest:guest@localhost:5672' }).then(() => {
 [![Twitter](https://img.shields.io/badge/style-twitter-333333.svg?logo=twitter&logoColor=&label=)](https://twitter.com/osmondvanhemert)
 [![Web](https://img.shields.io/badge/style-website-333333.svg?logoColor=white&label=&logo=diaspora)](https://www.osmondvanhemert.nl)
 
+## Contributing
 
+See the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) file for details.
 
 ## Donations
 
