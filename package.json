@@ -3,9 +3,22 @@
   "version": "0.0.2",
   "description": "Distributed Procedure Calls using AMQP",
   "main": "src/index.js",
+  "keywords": [
+    "amqp",
+    "amqplib",
+    "distributed",
+    "functions",
+    "rabbitmq",
+    "rpc"
+  ],
   "scripts": {
-    "test": "standard && node ./test"
+    "test": "tap test/*.test.js --coverage",
+    "lint": "standard"
   },
+  "precommit": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ovhemert/dpc.git"
@@ -15,6 +28,9 @@
   "bugs": {
     "url": "https://github.com/ovhemert/dpc/issues"
   },
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "homepage": "https://github.com/ovhemert/dpc#readme",
   "dependencies": {
     "amqplib": "^0.5.2",
@@ -22,6 +38,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "standard": "*"
+    "standard": "*",
+    "tap": "^12.0.1"
   }
 }
