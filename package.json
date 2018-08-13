@@ -1,10 +1,23 @@
 {
   "name": "dpc",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Distributed Procedure Calls using AMQP",
   "main": "src/index.js",
   "keywords": [
-    "amqp", "amqplib", "async", "await", "call", "callback", "distributed", "functions",  "microservice", "procedure", "promise", "rabbitmq", "remote", "rpc"
+    "amqp",
+    "amqplib",
+    "async",
+    "await",
+    "call",
+    "callback",
+    "distributed",
+    "functions",
+    "microservice",
+    "procedure",
+    "promise",
+    "rabbitmq",
+    "remote",
+    "rpc"
   ],
   "scripts": {
     "dev": "node ./test/index.js",
