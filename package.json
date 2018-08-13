@@ -4,20 +4,7 @@
   "description": "Distributed Procedure Calls using AMQP",
   "main": "src/index.js",
   "keywords": [
-    "amqp",
-    "amqplib",
-    "async",
-    "await",
-    "call",
-    "callback",
-    "distributed",
-    "functions",
-    "microservice",
-    "procedure",
-    "promise",
-    "rabbitmq",
-    "remote",
-    "rpc"
+    "amqp", "amqplib", "async", "await", "call", "callback", "distributed", "functions",  "microservice", "procedure", "promise", "rabbitmq", "remote", "rpc"
   ],
   "scripts": {
     "dev": "node ./test/index.js",
@@ -25,10 +12,6 @@
     "test:report": "standard && tap test/*.test.js --coverage  --coverage-report=html --100",
     "posttest": "tap --coverage --coverage-report=lcovonly"
   },
-  "precommit": [
-    "lint",
-    "test"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ovhemert/dpc.git"
