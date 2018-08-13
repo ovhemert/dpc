@@ -11,6 +11,7 @@ const main = async () => {
   dpc.register(function sumNumbers (params, cb) {
     const numbers = params.numbers || []
     const res = numbers.reduce((a, b) => a + b, 0)
+    console.log(`sumNumbers (working): ${res}`)
     return cb(null, res)
   })
 
