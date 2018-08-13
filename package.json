@@ -21,8 +21,9 @@
   ],
   "scripts": {
     "dev": "node ./test/index.js",
-    "test": "tap test/*.test.js --coverage",
-    "lint": "standard"
+    "test": "standard && tap test/*.test.js --coverage --100",
+    "test:report": "standard && tap test/*.test.js --coverage  --coverage-report=html --100",
+    "posttest": "tap --coverage --coverage-report=lcovonly"
   },
   "precommit": [
     "lint",
