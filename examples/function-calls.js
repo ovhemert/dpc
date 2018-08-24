@@ -13,7 +13,7 @@ const main = async () => {
     const res = numbers.reduce((a, b) => a + b, 0)
     console.log(`sumNumbers (working): ${res}`)
     return cb(null, res)
-  }, { remoteOnly: false })
+  }, { remoteOnly: false, ttl: 5000 })
 
   // call function with callback
   dpc.functions.sumNumbers({ numbers: [1, 2, 3] }, function (err, result) {

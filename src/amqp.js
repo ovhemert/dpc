@@ -34,10 +34,7 @@ class AMQP {
       // generic consume handler
       const consume = (queue, msg) => {
         let _done = (err, res) => {
-          if (err && err.message === 'NACK') {
-            console.log(err)
-            return self.channel.nack(msg)
-          }
+          if (err && err.message.startsWith('NACK:')) { return self.channel.nack(msg) }
           self.channel.ack(msg)
         }
         try {

@@ -51,23 +51,45 @@ function onResponse (msg, done) {
   done()
 }
 
-function proxy (func) {
+function proxy (_function) {
   // proxy the registered function
   const self = this
   return util.proxy(function (params, done) {
     // create the message
-    let msg = message.createRequest(func.name, params)
+    let msg = message.createRequest(_function.func.name, params)
     // register callback
     let _callbacks = _private(self).callbacks
-    _callbacks[msg.properties.messageId] = new Callback(done)
+    let cbDone = (err, res) => {
+      delete _callbacks[msg.properties.messageId]
+      return done(err, res)
+    }
+    _callbacks[msg.properties.messageId] = new Callback(cbDone, _function.options)
     // queue message for execution
     _private(self).amqp.request(msg)
   })
 }
 
 class Callback {
-  constructor (done) {
-    this.done = done
+  constructor (func, options) {
+    this.done = (err, res) => {
+      this._finished = true
+      clearTimeout(this._ttlTimer)
+      return func(err, res)
+    }
+    this._timeout = false
+    this._finished = false
+    this._ttlTimer = setTimeout(() => {
+      if (!this._finished) { return this.done(Error('Timeout')) }
+    }, options.ttl)
+  }
+}
+
+class FunctionStore {
+  constructor (func, options) {
+    this.func = func
+    this.options = Object.assign({}, {
+      ttl: 1000
+    }, options)
   }
 }
 
@@ -103,10 +125,10 @@ class DPC {
     if (!func.name) { throw new Error('Anonymous functions not allowed') }
     // save original function
     let _functions = _private(self).functions
-    const _function = { func: func, options: options }
+    const _function = new FunctionStore(func, options)
     _functions[func.name] = _function
     // create proxied function
-    self.functions[func.name] = proxy.call(self, func)
+    self.functions[func.name] = proxy.call(self, _function)
   }
 }
 
