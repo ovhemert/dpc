@@ -1,6 +1,6 @@
 {
   "name": "dpc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Distributed Procedure Calls using AMQP",
   "main": "src/index.js",
   "keywords": [
