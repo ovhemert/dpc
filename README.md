@@ -64,6 +64,10 @@ dpc.connect({ url: 'amqp://guest:guest@localhost:5672' }).then(() => {
 })
 ```
 
+## API
+
+See the [API.md](./docs/API.md) file for details.
+
 ## Maintainers
 
 **Osmond van Hemert**
