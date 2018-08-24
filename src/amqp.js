@@ -3,6 +3,8 @@
 const os = require('os')
 const amqplib = require('amqplib')
 
+const message = require('./message')
+
 class AMQP {
   async connect (options = {}) {
     let self = this
@@ -32,12 +34,15 @@ class AMQP {
       // generic consume handler
       const consume = (queue, msg) => {
         let _done = (err, res) => {
+          if (err && err.message === 'NACK') {
+            console.log(err)
+            return self.channel.nack(msg)
+          }
           self.channel.ack(msg)
-          if (err) { console.log(err) }
         }
         try {
-          let payload = JSON.parse(msg.content)
-          self.receive(payload, _done)
+          const queueMsg = message.getFromQueue(msg)
+          self.receive(queueMsg, _done)
         } catch (err) {
           _done(err)
         }
@@ -57,15 +62,14 @@ class AMQP {
     }
   }
   request (msg) {
-    msg.from = this.localId
-    msg.replyTo = this.queueLocal
-    const json = JSON.stringify(msg)
-    this.channel.sendToQueue(this.queueGlobal, Buffer.from(json), { correlationId: msg.uuid, replyTo: msg.replyTo })
+    msg.properties.appId = this.localId
+    msg.properties.replyTo = this.queueLocal
+    const json = JSON.stringify(msg.content)
+    this.channel.sendToQueue(this.queueGlobal, Buffer.from(json), msg.properties)
   }
   response (msg) {
-    msg.from = this.localId
-    const json = JSON.stringify(msg)
-    this.channel.sendToQueue(msg.to, Buffer.from(json), { correlationId: msg.uuid })
+    const json = JSON.stringify(msg.content)
+    this.channel.sendToQueue(msg.properties.sendTo, Buffer.from(json), msg.properties)
   }
   receive (msg, done) {
     done()
