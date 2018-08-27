@@ -5,7 +5,8 @@ const uuidv4 = require('uuid/v4')
 const createRequest = function (cmd, params, options = {}) {
   const properties = Object.assign({}, options, {
     messageId: uuidv4(),
-    type: 'request'
+    type: 'request',
+    expiration: options.ttl
   })
   return {
     properties: properties,

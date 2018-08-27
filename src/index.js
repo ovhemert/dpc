@@ -56,7 +56,7 @@ function proxy (_function) {
   const self = this
   return util.proxy(function (params, done) {
     // create the message
-    let msg = message.createRequest(_function.func.name, params)
+    let msg = message.createRequest(_function.func.name, params, _function.options)
     // register callback
     let _callbacks = _private(self).callbacks
     let cbDone = (err, res) => {
