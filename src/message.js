@@ -6,7 +6,8 @@ const createRequest = function (cmd, params, options = {}) {
   const properties = Object.assign({}, options, {
     messageId: uuidv4(),
     type: 'request',
-    expiration: options.ttl
+    expiration: options.ttl,
+    broadcast: options.broadcast
   })
   return {
     properties: properties,

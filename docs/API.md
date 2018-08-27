@@ -88,6 +88,12 @@ This must be a *named* function that has only 2 arguments:
 
 This is an optional object that can have the following properties:
 
+**broadcast**: `true` / `false` (default)
+
+To allow a function to be executed by multiple instances, pass in the broadcast flag with value `true`. This will send the request to all connected instances, and wait for the timeout `ttl` to return the results. If an instance returns an error, the function will immediately return with this error.
+
+In case of a broadcast, the result will always be an array.
+
 **remoteOnly**: `true` / `false` (default)
 
 All instances of dpc will listen to the same queue. This means that an instance that sends a request to execute a function, can also receive that request.
