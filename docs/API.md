@@ -94,4 +94,8 @@ All instances of dpc will listen to the same queue. This means that an instance 
 
 To execute a function only on a remote instance, specify `true`. To also allow the same process to execute the function, specify `false`. If there is only 1 instance connected to the queue, then `false` (the default) will make sure that the function is always executed and `true` will not find a remote, and causes a timeout.
 
+**ttl**: `1000` (default)
 
+The amount of milliseconds to wait before the callback is triggered with a timeout-error. If the execution of a function is triggered, but there are no listeners to handle the request, this will make sure that the function always returns.
+
+If you have long-running functions, you can increase the number that best suits your situation.
