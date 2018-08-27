@@ -62,7 +62,11 @@ class AMQP {
     msg.properties.appId = this.localId
     msg.properties.replyTo = this.queueLocal
     const json = JSON.stringify(msg.content)
-    this.channel.sendToQueue(this.queueGlobal, Buffer.from(json), msg.properties)
+    if (msg.properties.broadcast) {
+      this.channel.publish(this.exchange, '', Buffer.from(json), msg.properties)
+    } else {
+      this.channel.sendToQueue(this.queueGlobal, Buffer.from(json), msg.properties)
+    }
   }
   response (msg) {
     const json = JSON.stringify(msg.content)

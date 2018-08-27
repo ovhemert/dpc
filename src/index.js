@@ -71,13 +71,11 @@ function proxy (_function) {
 
 class Callback {
   constructor (func, options) {
-    // let _responses = []
+    let _responses = []
     this.response = (err, res) => {
-      if (options.broadcast) {
-        // .. _responses
-      } else {
-        this.done(err, res)
-      }
+      if (err) { return this.done(err, null) }
+      if (options.broadcast) { return _responses.push(res) }
+      this.done(null, res)
     }
     this.done = (err, res) => {
       this._finished = true
@@ -86,7 +84,9 @@ class Callback {
     }
     this._finished = false
     this._ttlTimer = setTimeout(() => {
-      if (!this._finished) { return this.done(Error('Timeout')) }
+      if (this._finished) { return }
+      if (options.broadcast && _responses.length > 0) { return this.done(null, _responses) }
+      return this.done(Error('Timeout'))
     }, options.ttl)
   }
 }
