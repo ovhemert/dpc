@@ -46,7 +46,7 @@ function onResponse (msg, done) {
   // trigger result
   let err = (msg.content.error) ? new Error(msg.content.error.message) : null
   if (err) { err.stack = msg.content.error.stack }
-  callback.done(err, msg.content.result)
+  callback.response(err, msg.content.result)
   // done
   done()
 }
@@ -71,12 +71,19 @@ function proxy (_function) {
 
 class Callback {
   constructor (func, options) {
+    // let _responses = []
+    this.response = (err, res) => {
+      if (options.broadcast) {
+        // .. _responses
+      } else {
+        this.done(err, res)
+      }
+    }
     this.done = (err, res) => {
       this._finished = true
       clearTimeout(this._ttlTimer)
       return func(err, res)
     }
-    this._timeout = false
     this._finished = false
     this._ttlTimer = setTimeout(() => {
       if (!this._finished) { return this.done(Error('Timeout')) }
