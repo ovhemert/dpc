@@ -26,7 +26,7 @@ Alternatively, you can install RabbitMQ on you local machine. Refer to "[Downloa
 
 ## Installation
 
-```
+```sh
 npm i dpc
 ```
 
