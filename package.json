@@ -40,7 +40,7 @@
   "homepage": "https://github.com/ovhemert/dpc#readme",
   "dependencies": {
     "amqplib": "^0.5.3",
-    "dotenv": "^6.2.0",
+    "dotenv": "^7.0.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
