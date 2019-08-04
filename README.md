@@ -1,7 +1,6 @@
 # Distributed Procedure Calls using AMQP
 
 [![Travis](https://img.shields.io/travis/com/ovhemert/dpc.svg?branch=master&logo=travis)](https://travis-ci.com/ovhemert/dpc)
-[![AppVeyor](https://img.shields.io/appveyor/ci/ovhemert/dpc.svg?logo=appveyor)](https://ci.appveyor.com/project/ovhemert/dpc)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6c7db239873b4d1eaa4f7e268aadccff)](https://www.codacy.com/app/ovhemert/dpc?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ovhemert/dpc&amp;utm_campaign=Badge_Grade)
 [![Known Vulnerabilities](https://snyk.io/test/npm/dpc/badge.svg)](https://snyk.io/test/npm/dpc)
 [![Coverage Status](https://coveralls.io/repos/github/ovhemert/dpc/badge.svg?branch=master)](https://coveralls.io/github/ovhemert/dpc?branch=master)
