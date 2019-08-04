@@ -1,7 +1,7 @@
 'use strict'
 
 function proxy (callback) {
-  let _proxy = (params = {}, cb) => {
+  const _proxy = (params = {}, cb) => {
     if (cb) {
       callback(params, cb)
     } else {

@@ -13,7 +13,7 @@ tap.test('creates request message', (t) => {
 
 tap.test('creates response message', (t) => {
   t.plan(9)
-  let request = message.createRequest('function', { a: 1, b: 2 })
+  const request = message.createRequest('function', { a: 1, b: 2 })
   request.properties.messageId = 'foo'
   request.properties.replyTo = 'bar'
 

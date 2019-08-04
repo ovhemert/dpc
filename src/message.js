@@ -16,8 +16,8 @@ const createRequest = function (cmd, params, options = {}) {
 }
 
 const createResponse = function (request, err, result) {
-  let _err = (err) ? JSON.parse(JSON.stringify(err, Object.getOwnPropertyNames(err))) : null
-  let _result = (!err) ? result : null
+  const _err = (err) ? JSON.parse(JSON.stringify(err, Object.getOwnPropertyNames(err))) : null
+  const _result = (!err) ? result : null
   const properties = Object.assign({}, {
     correlationId: request.properties.messageId,
     messageId: uuidv4(),

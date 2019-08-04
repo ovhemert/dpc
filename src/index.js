@@ -23,13 +23,13 @@ function onRequest (msg, done) {
     const func = _function.func
     func(params, (err, res) => {
       // create the message
-      let msgRes = message.createResponse(msg, err, res)
+      const msgRes = message.createResponse(msg, err, res)
       // queue message
       amqp.response(msgRes)
     })
   } catch (err) {
     // create the error message
-    let msgRes = message.createResponse(msg, err, null)
+    const msgRes = message.createResponse(msg, err, null)
     // queue message
     amqp.response(msgRes)
   }
@@ -44,7 +44,7 @@ function onResponse (msg, done) {
   const callback = _private(self).callbacks[correlationId]
   if (!callback) { throw Error('Callback not found') }
   // trigger result
-  let err = (msg.content.error) ? new Error(msg.content.error.message) : null
+  const err = (msg.content.error) ? new Error(msg.content.error.message) : null
   if (err) { err.stack = msg.content.error.stack }
   callback.response(err, msg.content.result)
   // done
@@ -56,10 +56,10 @@ function proxy (_function) {
   const self = this
   return util.proxy(function (params, done) {
     // create the message
-    let msg = message.createRequest(_function.func.name, params, _function.options)
+    const msg = message.createRequest(_function.func.name, params, _function.options)
     // register callback
-    let _callbacks = _private(self).callbacks
-    let cbDone = (err, res) => {
+    const _callbacks = _private(self).callbacks
+    const cbDone = (err, res) => {
       delete _callbacks[msg.properties.messageId]
       return done(err, res)
     }
@@ -71,7 +71,7 @@ function proxy (_function) {
 
 class Callback {
   constructor (func, options) {
-    let _responses = []
+    const _responses = []
     this.response = (err, res) => {
       if (err) { return this.done(err, null) }
       if (options.broadcast) { return _responses.push(res) }
@@ -107,10 +107,11 @@ class DPC {
     _private(this).callbacks = {}
     this.functions = {}
   }
+
   async connect (options = {}) {
     const self = this
     const url = options.url || process.env['AMQP_URL']
-    let _amqp = _private(self).amqp
+    const _amqp = _private(self).amqp
     await _amqp.connect({ url: url })
     _amqp.receive = (msg, done) => {
       try {
@@ -127,11 +128,12 @@ class DPC {
       }
     }
   }
+
   register (func, options) {
     const self = this
     if (!func.name) { throw new Error('Anonymous functions not allowed') }
     // save original function
-    let _functions = _private(self).functions
+    const _functions = _private(self).functions
     const _function = new FunctionStore(func, options)
     _functions[func.name] = _function
     // create proxied function
