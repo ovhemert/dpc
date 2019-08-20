@@ -110,7 +110,7 @@ class DPC {
 
   async connect (options = {}) {
     const self = this
-    const url = options.url || process.env['AMQP_URL']
+    const url = options.url || process.env.AMQP_URL
     const _amqp = _private(self).amqp
     await _amqp.connect({ url: url })
     _amqp.receive = (msg, done) => {
