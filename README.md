@@ -4,7 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6c7db239873b4d1eaa4f7e268aadccff)](https://www.codacy.com/app/ovhemert/dpc?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ovhemert/dpc&amp;utm_campaign=Badge_Grade)
 [![Known Vulnerabilities](https://snyk.io/test/npm/dpc/badge.svg)](https://snyk.io/test/npm/dpc)
 [![Coverage Status](https://coveralls.io/repos/github/ovhemert/dpc/badge.svg?branch=master)](https://coveralls.io/github/ovhemert/dpc?branch=master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ovhemert/dpc.svg)](https://greenkeeper.io/)
+
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
 This library provides a super easy way to declare and call remote functions from your services. You can run a single instance or scale to thousands. It's up to you!
