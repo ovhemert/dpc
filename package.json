@@ -41,7 +41,7 @@
   "dependencies": {
     "amqplib": "^0.5.5",
     "dotenv": "^8.2.0",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.3"
   },
   "devDependencies": {
     "standard": "^14.3.3",
